@@ -1,0 +1,12 @@
++---------------------------+------------------------------------------+
+| Signal                    | Behavior                                 |
++---------------------------+------------------------------------------+
+| up_down = 1               | Count increases                          |
+| up_down = 0               | Count decreases                          |
+| LR = 1                    | Load the input register                  |
+| sel = 0                   | Sum                                      |
+| sel = 1                   | Subtraction (count - data)               |
+| reset = 1                 | Active-high synchronous reset            |
+| clk                       | Positive edge (posedge)                  |
+| Display                   | Hexadecimal (0 to F), active-low         |
++---------------------------+------------------------------------------+
