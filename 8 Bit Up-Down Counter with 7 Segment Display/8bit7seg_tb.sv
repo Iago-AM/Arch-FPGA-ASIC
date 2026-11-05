@@ -47,38 +47,38 @@ module tb_top;
         reset = 0;
         #10;
 
-        // 2. Carrega o registrador de carga (u_regld) com o valor 0x05
+        // Loads u_regld with 0x05
         dado_ent = 8'h05;
         lr = 1;
         #10;
         lr = 0; // Load keep value
 
-        // 3. Deixa o contador contar um pouco (up_down = 1 -> incrementa)
-        // O contador sairá de 0 e irá subindo a cada ciclo de clock
+        // up_down = 1 -> increase
+        // Counter goes from 0, increasing every clock cycle
         #40; 
 
-        // 4. Testa a SOMA (sel = 0 seleciona a soma no MUX)
-        // Resultado esperado: valor do contador + 5 armazenado no registrador final
+        // Try SUM (sel = 0)
+        // Expected result: Counter value + 5 stored in final register
         sel = 0;
         #20;
 
-        // 5. Testa a SUBTRAÇÃO (sel = 1 seleciona a subtração no MUX)
-        // Resultado esperado: valor do contador - 5 armazenado no registrador final
+        // Try SUB (sel = 1)
+        // Expected result: Counter value - 5 stored in final register
         sel = 1;
         #20;
 
-        // 6. Mudar direção do contador para decrescente
+        // Change counter direction -> decrease
         up_down = 0;
         #30;
 
         // Fim da simulação
-        $display("Simulação finalizada com sucesso!");
+        $display("Simulation finished!");
         $finish;
     end
 
-    // Monitoramento opcional no console do simulador
+    // Optional monitoring
     initial begin
-        $monitor("Tempo=%0dns | Reset=%b | Contador_Dir=%b | Mux_Sel(0:Soma,1:Sub)=%b | Disp1_Hex=%b | Disp0_Hex=%b", 
+        $monitor("Time=%0dns | Reset=%b | Counter_R=%b | Mux_Sel(0:Sum,1:Sub)=%b | Disp1_Hex=%b | Disp0_Hex=%b", 
                  $time, reset, up_down, sel, display1, display0);
     end
 
